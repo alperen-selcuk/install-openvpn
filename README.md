@@ -7,7 +7,7 @@ chmod +x openvpn-install.sh
 ./openvpn-install.sh
 
 
-#CONF
+# CONF
 
 belli routelar için => route-nopull
 
