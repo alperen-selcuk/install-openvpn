@@ -9,8 +9,24 @@ chmod +x openvpn-install.sh
 
 # CONF
 
-belli routelar için => route-nopull
+sadece belli routelara VPN den erişmek gerisine kendi gatewayinizden gitmek için.
 
-advertised routes için => push "route X.X.X.X"
+pull-filter ignore redirect-gateway
+route-nopull
+push "route X.X.X.X"
+push "dhcp-option DNS 8.8.8.8"
 
-dns => push "dhcp-option X.X.X.X"
+bütün trafiğiniz VPN den çıkması için
+
+push "redirect-gateway def1"
+
+# NAT 
+
+eğer openvpn serverin netwrokü dışında bir yere erişecekseniz paketlerin NAT lanması gerekiyor
+openVPN server üzerinde
+
+iptables -A FORWARD -i tun0 -j ACCEPT
+iptables -t nat -A POSTROUTING -s 10.0.0.0/16 \! -d 10.0.0.0/16 -j SNAT --to-source 10.0.1.223
+iptables -t nat -A POSTROUTING -s 192.168.254.0/24 -o ens5 -j MASQUERADE
+
+bu komutları girmeniz gerek.
