@@ -25,8 +25,12 @@ push "redirect-gateway def1"
 eğer openvpn serverin netwrokü dışında bir yere erişecekseniz paketlerin NAT lanması gerekiyor
 openVPN server üzerinde
 
+```
 iptables -A FORWARD -i tun0 -j ACCEPT
-iptables -t nat -A POSTROUTING -s 10.0.0.0/16 \! -d 10.0.0.0/16 -j SNAT --to-source 10.0.1.223
+
+iptables -t nat -A POSTROUTING -s 10.0.0.0/16 \! -d 10.0.0.0/16 -j SNAT --to-source 10.0.1.223 //openvpn ethernet IP
+
 iptables -t nat -A POSTROUTING -s 192.168.254.0/24 -o ens5 -j MASQUERADE
+```
 
 bu komutları girmeniz gerek.
