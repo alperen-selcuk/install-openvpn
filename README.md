@@ -9,7 +9,9 @@ chmod +x openvpn-install.sh
 
 # CONF
 
-sadece belli routelara VPN den erişmek gerisine kendi gatewayinizden gitmek için.
+sadece belli routelara VPN den erişmek gerisine kendi gatewayinizden gitmek için aşağıdaki configleri openvpn conf dosyasına ekliyoruz.
+
+/etc/openvpn/server/server.conf
 
 ```
 pull-filter ignore redirect-gateway
