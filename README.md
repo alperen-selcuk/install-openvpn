@@ -11,10 +11,12 @@ chmod +x openvpn-install.sh
 
 sadece belli routelara VPN den erişmek gerisine kendi gatewayinizden gitmek için.
 
+```
 pull-filter ignore redirect-gateway
 route-nopull
 push "route X.X.X.X"
 push "dhcp-option DNS 8.8.8.8"
+```
 
 bütün trafiğiniz VPN den çıkması için
 
