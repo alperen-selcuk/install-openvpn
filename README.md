@@ -29,6 +29,8 @@ push "redirect-gateway def1"
 eğer openvpn serverin netwrokü dışında bir yere erişecekseniz paketlerin NAT lanması gerekiyor
 openVPN server üzerinde
 
+eper VPN bloğunu default bıraktıysanız 10.8.0.0/24 olarak MASQUERADE yapmanız gerek. ben 192.168.254.0/24 kullandım.
+
 ```
 iptables -A FORWARD -i tun0 -j ACCEPT
 
